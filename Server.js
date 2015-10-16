@@ -48,7 +48,7 @@ app.use(multer({ dest: './uploads/',
 		  photo.url = result.url;
 		  photo.secureUrl = result.secure_url;
 
-		  photo.save(funnction (err) {
+		  photo.save(function (err) {
 		  	console.error('Unable to save photo details', err);
 		  });
 		});
