@@ -67,9 +67,10 @@ app.post('/api/photo',function(req,res){
 
 		PhotoModel.find({}, 'url', function (error, docs) {
 			var photoList = "File is uploaded. Your list of photos are :";
-		
+			var i = 1;
+
 			docs.forEach(function (photo) {
-				photoList += '\n <a href=' + photo.url + '>' + photo.publicId + '</a>'
+				photoList += 'Photo-' + i++ + ' : ' + photo.url + ';
 			});
 
 			res.end(photoList);
