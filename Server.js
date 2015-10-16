@@ -2,6 +2,17 @@ var express    		=       require("express");
 var multer     		=       require('multer');
 var app        		=       express();
 var upload 			= 		multer({ dest: './uploads/'});
+var cloudinary      =       require('cloudinary');
+
+cloudinary.config({ 
+  cloud_name: 'hi2z4su2p', 
+  api_key: '114891252928919', 
+  api_secret: 'eCL51fYt02gSbegwZYqz75ylwNc' 
+});
+
+cloudinary.uploader.upload('./uploads/', function(result) { 
+  console.log(result.url);
+});
 
 app.use(multer({ dest: './uploads/',
 	rename: function (fieldname, filename) {
