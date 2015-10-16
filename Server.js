@@ -3,6 +3,9 @@ var multer     		=       require('multer');
 var app        		=       express();
 var upload 			= 		multer({ dest: './uploads/'});
 var cloudinary      =       require('cloudinary');
+var mongoose		=		require('mongoose');
+
+mongoose.connect('mongodb://heroku_zh4cbvfs:hjpc8864334bcvb390de7s1u5q@ds033744.mongolab.com:33744/heroku_zh4cbvfs');
 
 cloudinary.config({ 
   cloud_name: 'hi2z4su2p', 
@@ -10,7 +13,19 @@ cloudinary.config({
   api_secret: 'eCL51fYt02gSbegwZYqz75ylwNc' 
 });
 
+var Schema = mongoose.Schema;
+ 
+var photoSchema = new Schema({
+    publicId  		: String
+  , version   		: Number
+  , signature 		: String
+  , format    		: String
+  , resourceType	: String
+  , url				: String
+  , secureUrl		: String
+});
 
+var PhotoModel = mongoose.model('Photo', photoSchema);
 
 app.use(multer({ dest: './uploads/',
 	rename: function (fieldname, filename) {
@@ -22,8 +37,21 @@ app.use(multer({ dest: './uploads/',
 	onFileUploadComplete: function (file) {
 		console.log(file.fieldname + ' uploaded to  ' + file.path)
 		cloudinary.uploader.upload('./' + file.path, function(result) { 
-		  console.log(result.url);
-		});	
+		  console.log(result);
+
+		  var photo = new PhotoModel();
+		  photo.publicId = result.public_id;
+		  photo.version = result.version;
+		  photo.signature = result.signature;
+		  photo.format = result.format;
+		  photo.resourceType = result.resource_type;
+		  photo.url = result.url;
+		  photo.secureUrl = result.secure_url;
+
+		  photo.save(funnction (err) {
+		  	console.error('Unable to save photo details', err);
+		  });
+		});
 	}
 }));
 

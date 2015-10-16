@@ -4,6 +4,7 @@
   "dependencies": {
     "cloudinary": "^1.2.5",
     "express": "~4.10.2",
+    "mongoose": "^4.1.11",
     "multer": "~0.1.6"
   },
   "scripts": {
