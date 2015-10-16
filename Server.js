@@ -70,7 +70,7 @@ app.post('/api/photo',function(req,res){
 			var i = 1;
 
 			docs.forEach(function (photo) {
-				photoList += 'Photo-' + i++ + ' : ' + photo.url + ';
+				photoList += 'Photo ' + (i++) + ' - ' + photo.url;
 			});
 
 			res.end(photoList);
