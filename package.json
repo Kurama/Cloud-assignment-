@@ -5,6 +5,9 @@
     "express": "~4.10.2",
     "multer": "~0.1.6"
   },
+  "scripts": {
+    "start": "node Server.js"
+  },
   "devDependencies": {
     "should": "~7.1.0",
     "mocha": "~2.3.3",
