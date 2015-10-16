@@ -64,7 +64,16 @@ app.post('/api/photo',function(req,res){
 		if(err) {
 			return res.end("Error uploading file.");
 		}
-		res.end("File is uploaded");
+
+		PhotoModel.find({}, 'url', function (error, docs) {
+			var photoList = "File is uploaded. Your list of photos are :";
+			int i = 1;
+			docs.forEach(function (photo) {
+				photoList += '\n <a href=' + photo.url + '>' + photo.publicId + '</a>'
+			});
+
+			res.end(photoList);
+		});
 	});
 });
 
