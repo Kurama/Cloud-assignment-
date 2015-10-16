@@ -10,9 +10,7 @@ cloudinary.config({
   api_secret: 'eCL51fYt02gSbegwZYqz75ylwNc' 
 });
 
-cloudinary.uploader.upload('./uploads/', function(result) { 
-  console.log(result.url);
-});
+
 
 app.use(multer({ dest: './uploads/',
 	rename: function (fieldname, filename) {
@@ -23,6 +21,9 @@ app.use(multer({ dest: './uploads/',
 	},
 	onFileUploadComplete: function (file) {
 		console.log(file.fieldname + ' uploaded to  ' + file.path)
+		cloudinary.uploader.upload('./' + file.path, function(result) { 
+		  console.log(result.url);
+		});	
 	}
 }));
 
