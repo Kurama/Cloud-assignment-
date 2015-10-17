@@ -61,6 +61,10 @@ app.get('/',function(req,res){
       res.sendFile(__dirname + "/login.html");
 });
 
+app.get('/photo',function(req,res){
+      res.sendFile(__dirname + "/index.html");
+});
+
 app.post('/api/photo',function(req,res){
 	upload(req,res,function(err) {
 		if(err) {
