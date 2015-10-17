@@ -34,3 +34,8 @@
         font-size: 25px;
 }
 
+.spanFont{
+        font-size: larger;
+    font-style: oblique;
+    font-family: sans-serif;
+}
