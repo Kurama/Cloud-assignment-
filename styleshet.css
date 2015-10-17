@@ -1,0 +1,20 @@
+
+#login {
+      display: block;
+    margin: 50;
+    width: 25%;
+    font-family: Arial, sans-serif;
+    font-size: 34px;
+    padding: 10px;
+    margin-left: 500px;
+    margin-top: 50px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+}
+
+#textlabel{
+    margin-left: 350px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}

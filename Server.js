@@ -56,7 +56,7 @@ app.use(multer({ dest: './uploads/',
 }));
 
 app.get('/',function(req,res){
-      res.sendFile(__dirname + "/index.html");
+      res.sendFile(__dirname + "/login.html");
 });
 
 app.post('/api/photo',function(req,res){
